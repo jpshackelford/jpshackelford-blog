@@ -1,6 +1,6 @@
 # jpshackelford.info blog site
 
-This blog is built with love and WASM. We use [Bartholomew](https://github.com/fermyon/bartholomew) for the blog engine and [Spin](https://spin.fermyon.dev) as the supporting framework. 
+This blog is built with love and WASM. We use [Bartholomew](https://github.com/fermyon/bartholomew) for the blog engine and [Spin](https://spin.fermyon.dev) for the supporting serverless framework and local app server. 
 
 This example has diverged from the [base template](https://github.com/fermyon/bartholomew-site-template) somewhat in that we use
 [Pico.css](https://picocss.com) instead of [bootstrap](https://getbootstrap.com). 
@@ -45,7 +45,7 @@ Available Routes:
   fileserver: http://127.0.0.1:3000/static (wildcard)
 ```
 
-Point your web browser to `http://localhost:3000/` to preview the blog site. The [watch](https://developer.fermyon.com/spin/v2/running-apps#monitoring-applications-for-changes) command will pick up changes as you save them so you only need to refresh the browser, not restart spin.
+Point your web browser to `http://localhost:3000/` to preview the site. The [watch](https://developer.fermyon.com/spin/v2/running-apps#monitoring-applications-for-changes) command will pick up changes as you save them so you only need to refresh the browser rather then restarting spin. 
 
 ## Directory Structure:
 
@@ -59,9 +59,15 @@ Point your web browser to `http://localhost:3000/` to preview the blog site. The
 
 Point your web browser to `http://localhost:3000/` to see the blog site.
 
+## Other examples
+
+Other examples of Bartholomew sites are at:
+- https://github.com/fermyon/developer
+- https://github.com/coderoflagos/bartholomew-sample (See also Opemipo Disu's accompanying [article](https://coderoflagos.hashnode.dev/how-i-built-a-custom-ui-with-css-in-bartholomew-cl9wlr62m000h09kxg4ut70ba).)
+
 ## About the License
 
-Content in the following directory trees are licensed under CC0 (see LICENSE for details). To the greatest extent possible, you are free to use this content however you want.  
+Content in the following directory trees are licensed under CC0 (see [LICENSE](https://github.com/jpshackelford/jpshackelford-blog/blob/main/LICENSE.txt) for details). To the greatest extent possible, you are free to use this content however you want.  
 
 ```
 /config
