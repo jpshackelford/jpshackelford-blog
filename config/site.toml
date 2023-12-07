@@ -2,7 +2,7 @@ title = "jpshackelford"
 # logo = "URL to logo"
 base_url = "http://localhost:3000"
 about = "John-Mason Shackelford is a software product leader and DevOps expert."
-index_site_pages = ["main","blog"]
+index_site_pages = ["main"]
 
 [extra]
 copyright = "2023 John-Mason Shackelford"

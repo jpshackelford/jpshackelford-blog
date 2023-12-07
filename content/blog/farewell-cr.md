@@ -1,6 +1,6 @@
 title = "Farewell to Pearson & Cedar Rapids"
 date = "2011-10-11T12:33:00Z"
-template = "blog"
+template = "main"
 tags = []
 ---
 It has been almost ten years to the day since Sarah and I first arrived in Cedar Rapids to work with Pearson Education and it is with a mix of emotions that we say farewell.

@@ -7,14 +7,14 @@
     <div class="container">
  
     </div>
-    <div class="grid">
+    <div class="grid reading-with-sidebar">
         <div> <!-- main col 1-->
 
             {{#each (blogs site.pages)}}
                 <article>
                     {{#if page.head}}
                         {{#if page.head.title}}
-                            <header>{{page.head.title}}</header>
+                            <header><h2>{{page.head.title}}</h2></header>
                         {{/if}}
                         
                         {{! Since this is HTML, we use the triple-curly }}

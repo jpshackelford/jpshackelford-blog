@@ -1,0 +1,94 @@
+/* These styles assume Pico 1.5.10 */
+
+
+/* 
+    Background color
+*/
+
+/*  I don't know what I am doing here. What I want to do is use 
+    Pico conventions to set body { background-color: #c0b5a8 } in light mode
+    for screen media only. 
+
+    I'll probably need to find a better body color for dark mode.
+*/
+
+[data-theme=light],
+:root:not([data-theme=dark]) {
+    --background-color: #c0b5a8;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --background-color: #11191f;
+    }
+}
+
+[data-theme=dark] {
+    --background-color: #11191f;
+}
+
+
+
+/* 
+   Color styles below were generated for Pico by
+   via https://picocss.com/docs/customization.html 
+*/
+
+/* Orange Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    --primary: #fb8c00;
+    --primary-hover: #f57c00;
+    --primary-focus: rgba(251, 140, 0, 0.125);
+    --primary-inverse: #FFF;
+}
+
+/* Orange Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        --primary: #fb8c00;
+        --primary-hover: #ff9800;
+        --primary-focus: rgba(251, 140, 0, 0.25);
+        --primary-inverse: #FFF;
+    }
+}
+
+/* Orange Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+    --primary: #fb8c00;
+    --primary-hover: #ff9800;
+    --primary-focus: rgba(251, 140, 0, 0.25);
+    --primary-inverse: #FFF;
+}
+
+/* Orange (Common styles) */
+:root {
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
+}
+
+/*
+    Use CSS Grid for grid system instead of heavy framework.
+    See https://picocss.com/docs/grid.html
+
+    Used the grid generators at: 
+    https://cssgrid-generator.netlify.com/
+    https://griddy.io
+    
+    More on CSS Grid here:  https://learncssgrid.com/
+*/
+
+.reading-with-sidebar {
+    display: grid;
+    grid-template-columns: 1.75fr 230px;
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+    grid-row-gap: 0px;
+}
+
+/* Looks okay 

@@ -1,3 +1,10 @@
+
+# Spin 
+.spin/
+
+# MacOS
+**/.DS_Store
+
 # These should not be checked in because of the repo's license.
 /fileserver.gr.wasm
 /bartholomew.wasm
