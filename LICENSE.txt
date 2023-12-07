@@ -1,3 +1,18 @@
+Content in the following directory trees are licensed under CC0 below.
+
+/config
+/scripts
+/shortcodes
+/static/css
+/templates
+
+No license is granted for content in the following directory trees 
+(and all others) as this material is copyright John-Mason Shackelford 
+and all rights are reserved.
+
+/content
+
+
 Creative Commons Legal Code
 
 CC0 1.0 Universal
