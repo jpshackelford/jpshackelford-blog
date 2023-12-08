@@ -84,11 +84,15 @@
 */
 
 .reading-with-sidebar {
-    display: grid;
-    grid-template-columns: 1.75fr 230px;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
     grid-column-gap: 40px;
-    grid-row-gap: 0px;
+}
+
+@media (min-width: 992px)
+{
+    .reading-with-sidebar {
+        grid-template-columns: 1.75fr 230px;
+    }
 }
 
 /* Looks okay 
