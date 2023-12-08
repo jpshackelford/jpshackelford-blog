@@ -1,84 +1,118 @@
-# jpshackelford.info blog site
+<div align="center">
+  <h1>Fermyon Spin</h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./docs/static/image/logo-dark.png">
+    <img alt="spin logo" src="./docs/static/image/logo.png" width="300" height="128">
+  </picture>
+  <p>Spin is a framework for building, deploying, and running fast, secure, and composable cloud microservices with WebAssembly.</p>
+      <a href="https://github.com/fermyon/spin/actions/workflows/build.yml"><img src="https://github.com/fermyon/spin/actions/workflows/build.yml/badge.svg" alt="build status" /></a>
+      <a href="https://discord.gg/eGN8saYqCk"><img alt="Discord" src="https://img.shields.io/discord/926888690310053918?label=Discord"></a>
+</div>
 
-This blog is built with love and WASM. We use [Bartholomew](https://github.com/fermyon/bartholomew) for the blog engine and [Spin](https://spin.fermyon.dev) for the supporting serverless framework and local app server. 
+## What is Spin?
 
-This example has diverged from the [base template](https://github.com/fermyon/bartholomew-site-template) somewhat in that we use
-[Pico.css](https://picocss.com) instead of [bootstrap](https://getbootstrap.com). 
+Spin is an open source framework for building and running fast, secure, and
+composable cloud microservices with WebAssembly. It aims to be the easiest way
+to get started with WebAssembly microservices, and takes advantage of the latest
+developments in the
+[WebAssembly component model](https://github.com/WebAssembly/component-model)
+and [Wasmtime](https://wasmtime.dev/) runtime.
 
-## Installation
+Spin offers a simple CLI that helps you create, distribute, and execute
+applications, and in the next sections we will learn more about Spin
+applications and how to get started.
 
-To use Bartholomew, install [Spin](https://spin.fermyon.dev).
+## Getting started
 
-For MacOS:
-
-Use [Homebrew](https://brew.sh) by first adding a tap and then installing spin.
-```console
-$ brew tap fermyon/tap
+See the [Install Spin](https://developer.fermyon.com/spin/install) page of the [Spin documentation](https://developer.fermyon.com/spin/index) for a detailed
+guide on installing and configuring Spin, but in short run the following commands:
+```bash
+curl -fsSL https://developer.fermyon.com/downloads/install.sh | bash
+sudo mv ./spin /usr/local/bin/spin
 ```
-```console
-$ brew install fermyon/tap/spin
+
+Alternatively, you could [build Spin from source](https://developer.fermyon.com/spin/contributing/).
+
+To get started writing apps, follow the [quickstart guide](https://developer.fermyon.com/spin/quickstart/),
+and then follow the
+[Rust](https://developer.fermyon.com/spin/rust-components/), [JavaScript](https://developer.fermyon.com/spin/javascript-components), [Python](https://developer.fermyon.com/spin/python-components), or [Go](https://developer.fermyon.com/spin/go-components/)
+language guides, and the [guide on writing Spin applications](https://developer.fermyon.com/spin/configuration/).
+
+## Usage
+Below is an example of using the `spin` CLI to create a new Spin application.  To run the example you will need to install the `wasm32-wasi` target for Rust.
+
+```bash
+$ rustup target add wasm32-wasi
 ```
 
-For Linux:
-
-The installer script installs Spin along with a starter set of language templates and plugins:
-
-```console
-$ curl -fsSL https://developer.fermyon.com/downloads/install.sh | bash
+First, run the `spin new` command to create a Spin application from a template.
+```bash
+# Create a new Spin application named 'hello-rust' based on the Rust http template, accepting all defaults
+$ spin new --accept-defaults http-rust hello-rust
 ```
-Once you have run the installer script, it is highly recommended to add Spin to a folder, which is on your path, e.g.:
-```console
-$ sudo mv spin /usr/local/bin/
-```
-See the complete [install instructions](https://developer.fermyon.com/spin/v2/install) for source builds and other platforms.
+Running the `spin new` command created a `hello-rust` directory with all the necessary files for your application. Change to the `hello-rust` directory and build the application with `spin build`, then run it locally with `spin up`:
 
-## Edit & View Changes
+```bash
+# Compile to Wasm by executing the `build` command.
+$ spin build
+Executing the build command for component hello-rust: cargo build --target wasm32-wasi --release
+    Finished release [optimized] target(s) in 0.03s
+Successfully ran the build command for the Spin components.
 
-To start your website, run the following command from this directory:
+# Run the application locally.
+$ spin up
+Logging component stdio to ".spin/logs/"
 
-```console
-$ spin watch --skip-build
-
-Serving HTTP on address http://127.0.0.1:3000
+Serving http://127.0.0.1:3000
 Available Routes:
-  bartholomew: http://127.0.0.1:3000 (wildcard)
-  fileserver: http://127.0.0.1:3000/static (wildcard)
+  hello-rust: http://127.0.0.1:3000 (wildcard)
 ```
 
-Point your web browser to `http://localhost:3000/` to preview the site. The [watch](https://developer.fermyon.com/spin/v2/running-apps#monitoring-applications-for-changes) command will pick up changes as you save them so you only need to refresh the browser rather then restarting spin. 
+That's it! Now that the application is running, use your browser or cURL in another shell to try it out:
 
-## Directory Structure:
+```bash
+# Send a request to the application.
+$ curl -i 127.0.0.1:3000
+HTTP/1.1 200 OK
+foo: bar
+content-length: 14
+date: Thu, 13 Apr 2023 17:47:24 GMT
 
-- `config/site.toml`: The main [configuration file](https://developer.fermyon.com/bartholomew/configuration#configuration-using-toml) for the site.
-- `content/`: [Markdown](https://developer.fermyon.com/bartholomew/markdown) files for blog content.
-- `scripts/` (advanced): [Rhai](https://developer.fermyon.com/bartholomew/scripting) scripts.
-- `spin.toml`: The [configuration file](https://developer.fermyon.com/spin/v2/writing-apps#writing-an-application-manifest) for the Spin application.
-- `static/`: Static assets like images, CSS, and downloads.
-- `templates/`: Handlebars [templates](https://developer.fermyon.com/bartholomew/templates) 
-- `shortcodes/`: [shortcodes](https://bartholomew.fermyon.dev/shortcodes)  
-
-Point your web browser to `http://localhost:3000/` to see the blog site.
-
-## Other examples
-
-Other examples of Bartholomew sites are at:
-- https://github.com/fermyon/developer
-- https://github.com/coderoflagos/bartholomew-sample (See also Opemipo Disu's accompanying [article](https://coderoflagos.hashnode.dev/how-i-built-a-custom-ui-with-css-in-bartholomew-cl9wlr62m000h09kxg4ut70ba).)
-
-## About the License
-
-Content in the following directory trees are licensed under CC0 (see [LICENSE](https://github.com/jpshackelford/jpshackelford-blog/blob/main/LICENSE.txt) for details). To the greatest extent possible, you are free to use this content however you want.  
-
+Hello, Fermyon         
 ```
-/config
-/scripts
-/shortcodes
-/static/css
-/templates
-```
-No license is granted for content in the following directory trees 
-(and all others) as this material is copyright John-Mason Shackelford and all rights are reserved.
-```
-/content
-/static/media
-```
+You can make the app do more by editting the `src/lib.rs` file in the `hello-rust` directory using your favorite editor or IDE. To learn more about writing Spin applications see [Writing Applications](https://developer.fermyon.com/spin/writing-apps) in the Spin documentation.  To learn how to publish and distribute your application see the [Publishing and Distribution](https://developer.fermyon.com/spin/distributing-apps) guide in the Spin documentation.
+
+For more information on the cli commands and subcommands see the [CLI Reference](https://developer.fermyon.com/common/cli-reference).
+
+## Language Support for Spin Features
+
+The table below summarizes the [feature support](https://developer.fermyon.com/spin/language-support-overview) in each of the language SDKs.
+
+| Feature | Rust SDK Supported? | TypeScript SDK Supported? | Python SDK Supported? | Tiny Go SDK Supported? | C# SDK Supported? |
+|-----|-----|-----|-----|-----|-----|
+| **Triggers** |
+| [HTTP](https://developer.fermyon.com/spin/http-trigger) | Supported | Supported | Supported | Supported | Supported |
+| [Redis](https://developer.fermyon.com/spin/redis-trigger) | Supported | Not Supported | Not Supported | Supported | Not Supported |
+| **APIs** |
+| [Outbound HTTP](https://developer.fermyon.com/spin/rust-components.md#sending-outbound-http-requests) | Supported | Supported | Supported | Supported | Supported |
+| [Configuration Variables](https://developer.fermyon.com/spin/variables) | Supported | Supported | Supported | Supported | Supported |
+| [Key Value Storage](https://developer.fermyon.com/spin/kv-store-api-guide) | Supported | Supported | Supported | Supported | Not Supported |
+| [Sqlite Storage](https://developer.fermyon.com/spin/sqlite-api-guide) | Supported | Supported | Supported | Supported | Not Supported |
+| [MySQL](https://developer.fermyon.com/spin/rdbms-storage#using-mysql-and-postgresql-from-applications) | Supported | Not Supported | Not Supported | Not Supported | Not Supported |
+| [PostgreSQL](https://developer.fermyon.com/spin/rdbms-storage#using-mysql-and-postgresql-from-applications) | Supported | Not Supported | Not Supported | Not Supported | Supported |
+| [Outbound Redis](https://developer.fermyon.com/spin/rust-components.md#storing-data-in-redis-from-rust-components) | Supported | Supported | Supported | Supported | Supported |
+| [Serverless AI](https://developer.fermyon.com/spin/rust-components#ai-inferencing-from-rust-components) | Supported | Supported | Not Supported | Not Supported | Not Supported |
+| **Extensibility** |
+| [Authoring Custom Triggers](https://developer.fermyon.com/spin/extending-and-embedding) | Supported | Not Supported | Not Supported | Not Supported | Not Supported |
+
+## Contributing
+
+We are delighted that you are interested in making Spin better! Thank you!
+Please follow the [contributing guide](https://developer.fermyon.com/spin/contributing).
+And join our [Discord server](https://discord.gg/eGN8saYqCk).
+
+## Stay in Touch
+Follow us on Twitter: [@spinframework](https://twitter.com/spinframework)
+
+You can join the Spin community in our [Discord server](https://discord.gg/eGN8saYqCk) where you can ask questions, get help, and show off the cool things you are doing with Spin!
+
