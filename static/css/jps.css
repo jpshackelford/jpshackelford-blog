@@ -17,6 +17,11 @@
     --background-color: #c0b5a8;
 }
 
+[data-theme=light],
+article:not([data-theme=dark]) {
+    --card-background-color: white;
+}
+
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
         --background-color: #11191f;
