@@ -13,14 +13,14 @@
 */
 
 [data-theme=light],
-:root:not([data-theme=dark]) {
-    --background-color: #c0b5a8;
+body:not([data-theme=dark]) {
+    background-color: #c0b5a8;
 }
 
-[data-theme=light],
+/* [data-theme=light],
 article:not([data-theme=dark]) {
     --card-background-color: white;
-}
+} */
 
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
@@ -31,8 +31,6 @@ article:not([data-theme=dark]) {
 [data-theme=dark] {
     --background-color: #11191f;
 }
-
-
 
 /* 
    Color styles below were generated for Pico by
