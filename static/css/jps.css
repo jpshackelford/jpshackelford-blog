@@ -107,4 +107,8 @@ article>header {
     margin-bottom: calc(1rem * 1.5);
 }
 
+article:nth-child(1) {
+    margin-top: 0;
+}
+
 /* Looks okay 
