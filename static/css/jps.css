@@ -75,19 +75,22 @@ body:not([data-theme=dark]) {
 */
 
 .reading-with-sidebar {
+    --max-sidebar-width: 210px;
+    --max-grid-column-gap: 65px;
+
     grid-template-columns: 1fr;
-    grid-column-gap: 40px;
+    grid-column-gap: var(--max-grid-column-gap);
 }
 
 @media (min-width: 992px)
 {
     .reading-with-sidebar {
-        grid-template-columns: 1.75fr 230px;
+        grid-template-columns: 1.75fr var(--max-sidebar-width);
     }
 }
 
-/* Customize pico.css default values */
-h1, h2, h3, h4, h5, h6 {
+/* Adjust whitespace for articles */
+article>header>:is(h1, h2, h3, h4, h5, h6) {
     margin-bottom: 0;
 }
 
@@ -101,4 +104,21 @@ article:first-child {
 
 article:last-child {
     margin-bottom: 0;
+}
+
+/* sidebar styling */
+
+.sidebar img {
+    border-style: solid;
+    border-width: calc(var(--max-sidebar-width)/40);
+    border-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+}
+
+.sidebar section {
+    margin-bottom: 2rem;
+}
+
+.sidebar section>:is(h1, h2, h3, h4, h5, h6) {
+    margin-bottom: 1rem;
 }
