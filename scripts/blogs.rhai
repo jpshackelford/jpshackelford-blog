@@ -27,9 +27,10 @@ for item in keys {
             page: pages[item],
         });
         //blog_pages[path] = pages[item];
-    }
-   
+    }  
 }
-// Newest to oldest, assuming you put the date in the URI
+// This doesn't work due to limitation in Rhai.
+// See https://github.com/rhaiscript/rhai/issues/793
+// blog_pages.sort(|a,b| b.page.head.date - a.page.head.date);
 blog_pages.reverse();
-blog_pages
+blog_pages;

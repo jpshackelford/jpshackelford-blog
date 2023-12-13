@@ -5,22 +5,10 @@
     Background color
 */
 
-/*  I don't know what I am doing here. What I want to do is use 
-    Pico conventions to set body { background-color: #c0b5a8 } in light mode
-    for screen media only. 
-
-    I'll probably need to find a better body color for dark mode.
-*/
-
 [data-theme=light],
 body:not([data-theme=dark]) {
     background-color: #c0b5a8;
 }
-
-/* [data-theme=light],
-article:not([data-theme=dark]) {
-    --card-background-color: white;
-} */
 
 @media only screen and (prefers-color-scheme: dark) {
     :root:not([data-theme]) {
@@ -107,8 +95,10 @@ article>header {
     margin-bottom: calc(1rem * 1.5);
 }
 
-article:nth-child(1) {
+article:first-child {
     margin-top: 0;
 }
 
-/* Looks okay 
+article:last-child {
+    margin-bottom: 0;
+}
